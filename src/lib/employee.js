@@ -3,10 +3,11 @@ class Employee {
       this.name = name;
       this.id = id;
       this.email = email;
+      this.role = "Employee";
     }
 
     getRole() {
-        return "Employee";
+        return this.role;
       }
   
     getName() {
@@ -23,6 +24,6 @@ class Employee {
   
   
   
-  }
+  };
   
   module.exports = Employee;

@@ -1,7 +1,6 @@
 const Employee = require("./Employee");
 
 // - should be an instance of an Employee
-
 // - should return the expected role
 describe("Tests", () => {
   it("should get the instance of new employee", () => {

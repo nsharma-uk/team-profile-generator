@@ -1,9 +1,3 @@
-//import classes
-const Manager = require("../lib/Manager");
-const Engineer = require("../lib/Engineer");
-const Intern = require("../lib/Intern");
-
-//html head section
 
 //manager card
 const generateManagerCard = (manager) => {
@@ -91,14 +85,24 @@ const generateInternCard = (intern) => {
   </div>`;
 };
 
-const generateHtml = () => {
+const generateHtml = (teamName, manager, teamMembers) => {
+  const generatedCards = {
+    manager: generateManagerCard(teamMembers.manager),
+    interns: teamMembers.interns.map(generateInternCard),
+    engineers: teamMembers.engineers.map(generateEngineerCard),
+    teamName,
+  };
+  return generatedCards;
+};
+
+const wholeHtmlPage = (teamData) => {
   return `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>${intern.team}</title>
+    <title>Team Profile</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -122,14 +126,28 @@ const generateHtml = () => {
   </head>
   <body>
     <header class="p-4 mb-6 bg-info text-center text-muted">
-      <h1>Team Profiles</h1>
+      <h1>${teamData.teamName}</h1>
     </header>
     <main class="d-flex justify-content-around flex-wrap mt-5 m-2">
-    ${generateManagerCard}
-    ${generateEngineerCard}
-    ${generateInternCard}
+    ${teamData.manager}
+    ${teamData.interns.join("")}
+    ${teamData.engineers.join("")}
     </main>
-
+    <div class="footer-link-item">
+        <a class="social-icon" href="mailto:nsharmauk711@gmail.com" target="_blank">  
+          <ion-icon name="mail-outline"></ion-icon>
+          </a>
+          <a class="social-icon" href="https://twitter.com/nsharmauk" target="_blank">  
+            <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          <a class="social-icon" href="https://github.com/nsharma-uk" target="_blank">  
+        <ion-icon name="logo-github"></ion-icon>
+        </a>
+      </div>
+    </div>
+    <p class="has-text-white pb-3">Copyright &copy; 2022</p>
+  </div>
+</footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
@@ -139,4 +157,7 @@ const generateHtml = () => {
 </html>`;
 };
 
-module.exports = generateHtml;
+module.exports = {
+  generateHtml,
+  wholeHtmlPage,
+};

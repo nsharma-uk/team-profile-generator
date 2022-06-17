@@ -11,6 +11,7 @@ const teamNameQuestions = [
     type: "input",
     name: "team",
     message: "Please enter the team name:",
+    default: "My Team",
     validate: (answer) => {
       if (answer.length < 1) {
         return chalk.yellow(
@@ -52,8 +53,8 @@ const managerQuestions = [
     type: "input",
     message: "Please enter the manager's email:",
     name: "email",
-    validate: (answer) => {
-      if (answer.length < 1) {
+    validate: (email) => {
+      if (email.length < 1 || !validator.validate(email)) {
         return chalk.yellow(
           "A valid answer is required.  Please enter the manager's email:"
         );
@@ -64,7 +65,7 @@ const managerQuestions = [
   {
     type: "input",
     message: "Enter the manager's office number",
-    name: "officeNumber",
+    name: "office",
     default: "123",
     validate: (answer) => {
       if (answer.length <= 0 || !isNaN) {

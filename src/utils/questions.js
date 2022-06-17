@@ -1,11 +1,10 @@
-//Import chalk (colour styling for CLI)
+//Import chalk (color styling for CLI)
 const chalk = require("chalk");
 
 //Import email validator
 const validator = require("email-validator");
 
 //Questions
-
 const teamNameQuestions = [
   {
     type: "input",
@@ -82,7 +81,20 @@ const selectEmployee = [
     type: "list",
     message: "Would you like to add an Engineer or Intern to the team?",
     name: "select",
-    choices: ["Engineer", "Intern", "None"],
+    choices: [
+      {
+        name: "Engineer",
+        value: "engineer",
+      },
+      {
+        name: "Intern",
+        value: "intern",
+      },
+      {
+        name: "None",
+        value: "none",
+      },
+    ],
   },
 ];
 
@@ -180,8 +192,8 @@ const fileName = [
     type: "input",
     name: "filename",
     message:
-      "What would you like to name the file?  Please provide the file name only, without the extension:",
-    default: "team-profile",
+      "What would you like to name your html file?  Please provide the file name only, without the .html extension:",
+    default: "My Team",
   },
 ];
 

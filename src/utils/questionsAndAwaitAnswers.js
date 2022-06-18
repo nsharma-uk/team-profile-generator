@@ -49,13 +49,13 @@ const createNewManager = async () => {
     },
     {
       type: "input",
-      message: "Please enter the intern's employee id:",
+      message: "Please enter the manager's employee id:",
       name: "id",
-      validate: (answer) => {
-        answer && !isNaN(answer)
-          ? true
-          : chalk.yellow("A valid employee ID number is required:");
-      },
+      // validate: (answer) => {
+      //   answer && !isNaN(answer)
+      //     ? true
+      //     : chalk.yellow("A valid employee ID number is required.");
+      // },
     },
     {
       type: "input",

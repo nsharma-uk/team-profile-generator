@@ -10,75 +10,66 @@ const Intern = require("./lib/Intern");
 //import questions
 const {
   teamNameQuestions,
-  managerQuestions,
-  selectEmployee,
-  engineerQuestions,
-  internQuestions,
-  addAnother,
-  // fileName,
-} = require("./utils/questions");
+  createNewManager,
+  employeeRole,
+  createNewEngineer,
+  createNewIntern,
+  //addAnother,
+  fileName,
+} = require("./utils/questionsAndAwaitAnswers");
 
 //import answers
 const getAnswers = require("./utils/getAnswers");
 
-const { generateHtml, wholeHtmlPage } = require("./utils/generateHTML");
+const generateHtml = require("./utils/generateHTML");
 
 //import write to file function
 const writeToFile = require("./utils/writeToFile");
 
-//init function
-const init = async () => {
-  //start the questions
+//get whole team
+const getWholeTeam = async () => {
+  //empty object which the answers will get pushed too
+  const teamMembers = [];
+
   let inProgress = true;
 
-  //empty object which the answers will get pushed too
-  const teamMembers = { interns: [], engineers: [] };
-
-  const { team } = await inquirer.prompt(teamNameQuestions);
-
-  const { name, id, email, office } = await inquirer.prompt(managerQuestions);
-
-  const manager = new Manager(name, id, email, office);
-
-  teamMembers.manager = manager;
-
-  //while loop
-
   while (inProgress) {
-    const { employeeRole } = await inquirer.prompt(selectEmployee);
+    const { employeeType } = await employeeRole();
 
     //if statements
-    if (employeeRole == "Engineer") {
-      const { name, id, email, github } = await inquirer.prompt(
-        engineerQuestions
-      );
-      const engineer = new Engineer(name, id, email, github);
-      teamMembers.engineers.push(engineer);
+    if (employeeType == "engineer") {
+      const engineer = await createNewEngineer();
+      teamMembers.push(engineer);
     }
-    if (employeeRole == "Intern") {
-      const { name, id, email, school } = await inquirer.prompt(
-        internQuestions
-      );
 
-      const intern = new Intern(name, id, email, school);
-
-      teamMembers.interns.push(intern);
-    }
-    const addNewPerson = await inquirer.prompt(addAnother);
-
-    if (!addNewPerson.addEmployee) {
+    if (employeeType == "intern") {
+      const intern = await createNewIntern();
+      teamMembers.push(intern);
+    } else employeeType == "none";
+    {
       inProgress = false;
     }
   }
-  if (!inProgress) {
-    const newHTMLPage = generateHtml(team, teamMembers);
-    const html = wholeHtmlPage(newHTMLPage);
-    console.log(newHTMLPage);
+ };
+
+const init = async () => {
+  console.log("Welcome to the team profile generator");
+
+  const teamName = (await getAnswers(teamNameQuestions)).team;
+
+  const manager = await createNewManager();
+
+  const allTeamMembers = await getWholeTeam();
+
+  const generatedHtml = generateHtml(teamName, manager, allTeamMembers);
+
+  writeToFile(fileName, generatedHtml);
+
+  {
     //write to file
     writeToFile(path.join(__dirname, "../dist/index.html"), html);
     console.log("Your Team Profile has been created");
   }
 };
 
-//make sure to call the initialise otherwise your code won't run
 init();

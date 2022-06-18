@@ -1,10 +1,16 @@
+//import classes
+const Manager = require("../lib/Manager");
+const Engineer = require("../lib/Engineer");
+const Intern = require("../lib/Intern");
 
 //manager card
 const generateManagerCard = (manager) => {
+
+  console.log(manager);
   return `<div class="card m-5 bg-info shadow mb-5 bg-body rounded">
     <div class="card-header text-center text-muted bg-info">
       <i class="fa-solid fa-mug-hot fa-3x"></i>
-      <h3 class="p-2">${manager.role}</h3>
+      <h3 class="p-2">Manager</h3>
     </div>
     <div class="card-body">
       <h4 class="card-title text-center pb-3 pt-2">${manager.name}</h4>
@@ -22,6 +28,7 @@ const generateManagerCard = (manager) => {
           >
         </li>
       </ul>
+      
     </div>
   </div>`;
 };
@@ -31,10 +38,10 @@ const generateEngineerCard = (engineer) => {
   return `<div class="card m-5 shadow mb-5 bg-body rounded">
     <div class="card-header text-center text-muted bg-info">
       <i class="fa-solid fa-gears fa-3x"></i>
-      <h3 class="p-2">${engineer.role}</h3>
+      <h3 class="p-2">Engineer</h3>
     </div>
     <div class="card-body">
-      <h4 class="card-title text-center pb-3 pt-2">Carol</h4>
+      <h4 class="card-title text-center pb-3 pt-2">${engineer.name}</h4>
       <ul class="list-group mx-3 mb-3 list-group-flush">
         <li class="list-group-item fw-bold">
           Employee ID: <span class="fw-normal">${engineer.id}</span>
@@ -63,10 +70,10 @@ const generateInternCard = (intern) => {
   return ` <div class="card m-5 shadow mb-5 bg-body rounded">
     <div class="card-header text-center text-muted bg-info">
       <i class="fa-solid fa-graduation-cap fa-3x"></i>
-      <h3 class="p-2">${intern.role}</h3>
+      <h3 class="p-2">Intern</h3>
     </div>
     <div class="card-body">
-      <h4 class="card-title text-center pb-3 pt-2">Emily</h4>
+      <h4 class="card-title text-center pb-3 pt-2">${intern.name}</h4>
       <ul class="list-group mx-3 mb-3 list-group-flush">
         <li class="list-group-item fw-bold">
           Employee ID: <span class="fw-normal">${intern.id}</span>
@@ -86,16 +93,11 @@ const generateInternCard = (intern) => {
 };
 
 const generateHtml = (teamName, manager, teamMembers) => {
-  const generatedCards = {
-    manager: generateManagerCard(teamMembers.manager),
-    interns: teamMembers.interns.map(generateInternCard),
-    engineers: teamMembers.engineers.map(generateEngineerCard),
-    teamName,
-  };
-  return generatedCards;
-};
+  const newManagerCard = generateManagerCard (manager);
 
-const wholeHtmlPage = (teamData) => {
+  const generateTeamCard= (teamMember)=>
+
+
   return `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -126,12 +128,12 @@ const wholeHtmlPage = (teamData) => {
   </head>
   <body>
     <header class="p-4 mb-6 bg-info text-center text-muted">
-      <h1>${teamData.teamName}</h1>
+      <h1>${team}</h1>
     </header>
     <main class="d-flex justify-content-around flex-wrap mt-5 m-2">
-    ${teamData.manager}
-    ${teamData.interns.join("")}
-    ${teamData.engineers.join("")}
+${generateManagerCard()}
+    
+
     </main>
     <div class="footer-link-item">
         <a class="social-icon" href="mailto:nsharmauk711@gmail.com" target="_blank">  
@@ -157,7 +159,4 @@ const wholeHtmlPage = (teamData) => {
 </html>`;
 };
 
-module.exports = {
-  generateHtml,
-  wholeHtmlPage,
-};
+module.exports = generateHtml;

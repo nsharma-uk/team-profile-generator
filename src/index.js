@@ -1,4 +1,5 @@
 //import dependencies
+const fs = require("fs");
 const inquirer = require("inquirer");
 //const path = require("path");
 const chalk = require("chalk");
@@ -13,13 +14,10 @@ const {
   selectEmployeeQuestion,
   engineerQuestions,
   internQuestions,
-  //fileName,
 } = require("./utils/questions");
 
-//import answers
-//const getAnswers = require("./utils/getAnswers");
-
-const generateHtml = require("./utils/generateHTML");
+const { generateHtml } = require("./utils/generateHTML");
+const { writeToFile } = require("./utils/writeToFile");
 
 //import write to file function
 //const writeToFile = require("./utils/writeToFile");
@@ -33,6 +31,8 @@ const init = async () => {
   const engineers = [];
   const interns = [];
 
+  //ask team name
+
   const managerAnswers = await inquirer.prompt(managerQuestions);
 
   const manager = new Manager(
@@ -42,6 +42,8 @@ const init = async () => {
     managerAnswers.office,
     managerAnswers.team
   );
+
+  // engineers.push(manager);
 
   while (inProgress) {
     const { select } = await inquirer.prompt(selectEmployeeQuestion);
@@ -58,7 +60,6 @@ const init = async () => {
       );
 
       engineers.push(engineer);
-
     } else if (select === "intern") {
       const internAnswers = await inquirer.prompt(internQuestions);
 
@@ -73,16 +74,16 @@ const init = async () => {
       inProgress = false;
     }
   }
+
+  const generatedHtml = generateHtml(manager, engineers, interns);
+
+  writeToFile(generatedHtml);
+  console.log(
+    chalk.green(
+      "Your html file has been created and you can now open your html file"
+    )
+  );
+  //open(`file://${absolutePath}`, { app: "chrome" });
 };
-
-
-
-//writeToFile(fileName, generatedHtml);
-
-{
-  //write to file
-//  writeToFile(path.join(__dirname, "../dist/index.html"), html);
-  console.log("Your Team Profile has been created and your html file is ready.");
-}
 
 init();

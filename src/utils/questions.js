@@ -5,7 +5,10 @@ const chalk = require("chalk");
 const validator = require("email-validator");
 
 //Questions
-const teamNameQuestions = [
+
+//manager questions 
+
+const managerQuestions = [
   {
     type: "input",
     name: "team",
@@ -18,13 +21,8 @@ const teamNameQuestions = [
         );
       }
       return true;
-    },
+    }
   },
-];
-
-//manager questions and answers
-
-const managerQuestions = [
   {
     type: "input",
     message: "Please enter the manager's name:",
@@ -203,7 +201,6 @@ const internQuestions = [
 ];
 
 module.exports = {
-  teamNameQuestions,
   managerQuestions,
   selectEmployeeQuestion,
   engineerQuestions,

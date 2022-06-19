@@ -157,4 +157,4 @@ ${generateInternCard}
   </body>
 </html>`;
 
-module.exports = generateHtml;
+module.exports = { generateHtml };

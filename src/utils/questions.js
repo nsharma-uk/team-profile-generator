@@ -85,15 +85,13 @@ const selectEmployeeQuestion = [
       {
         name: "Engineer",
         value: "engineer",
-        short: "eng",
       },
       {
         name: "Intern",
         value: "intern",
-        short: "eng",
       },
       {
-        name: "No, my team is complete ",
+        name: "No. My team is complete.",
       },
     ],
   },
@@ -119,22 +117,12 @@ const engineerQuestions = [
     type: "input",
     message: "Please enter the engineer's employee id:",
     name: "id",
-    validate: (answer) => {
-      if (answer.length <= 0 || !isNaN(answer)) {
-        return chalk.yellow("A valid employee ID number is required");
-      }
-      return true;
-    },
-  },
-  {
-    type: "input",
-    message: "Please enter the intern's employee id:",
-    name: "id",
-    validate: (answer) => {
-      answer && !isNaN(answer)
-        ? true
-        : chalk.yellow("A valid employee ID number is required:");
-    },
+    // validate: (answer) => {
+    //   if (answer.length <= 0 || !isNaN(answer)) {
+    //     return chalk.yellow("A valid employee ID number is required");
+    //   }
+    //   return true;
+    // },
   },
   {
     type: "input",
@@ -143,11 +131,21 @@ const engineerQuestions = [
     validate: (email) => {
       if (email.length < 1 || !validator.validate(email)) {
         return chalk.yellow(
-          "A valid answer is required.  Please enter the engineer's email:"
+          "A valid answer is required.  Please enter the engineer's email."
         );
       }
       return true;
     },
+  },
+  {
+    type: "input",
+    message: "Please enter the engineer's github username:",
+    name: "github",
+    // validate: (answer) => {
+    //   answer && !isNaN(answer)
+    //     ? true
+    //     : chalk.yellow("A valid employee ID number is required.");
+    // },
   },
 ];
 
@@ -170,11 +168,24 @@ const internQuestions = [
     type: "input",
     message: "Please enter the intern's employee id:",
     name: "id",
-    validate: (answer) => {
-      answer && !isNaN(answer)
-        ? true
-        : chalk.yellow("A valid employee ID number is required:");
-    },
+    // validate: (answer) => {
+    //   answer && !isNaN(answer)
+    //     ? true
+    //     : chalk.yellow("A valid employee ID number is required.");
+    // },
+  },
+  {
+    type: "input",
+    message: "Please enter the intern's email:",
+    name: "email",
+    // validate: (email) => {
+    //   if (email.length < 1 || !validator.validate(email)) {
+    //     return chalk.yellow(
+    //       "A valid answer is required.  Please enter the intern's email:"
+    //     );
+    //   }
+    //   return true;
+    // },
   },
   {
     type: "input",
@@ -184,19 +195,6 @@ const internQuestions = [
       if (answer.length < 1) {
         return chalk.yellow(
           "A valid answer is required.  Please enter name of the intern's school:"
-        );
-      }
-      return true;
-    },
-  },
-  {
-    type: "input",
-    message: "Please enter the intern's email:",
-    name: "email",
-    validate: (email) => {
-      if (email.length < 1 || !validator.validate(email)) {
-        return chalk.yellow(
-          "A valid answer is required.  Please enter the intern's email:"
         );
       }
       return true;

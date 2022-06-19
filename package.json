@@ -22,7 +22,8 @@
   "homepage": "https://github.com/nsharma-uk/team-profile-generator#readme",
   "devDependencies": {
     "@types/jest": "^28.1.1",
-    "jest": "^28.1.1"
+    "jest": "^28.1.1",
+    "path": "^0.12.7"
   },
   "dependencies": {
     "chalk": "^4.1.2",

@@ -3,8 +3,6 @@
 // const Engineer = require("../lib/Engineer");
 // const Intern = require("../lib/Intern");
 
-
-
 // //manager card
 // const generateManagerCard = (manager) => {
 //   console.log(manager);
@@ -33,8 +31,6 @@
 //     </div>
 //   </div>`;
 // };
-
-
 
 // //engineer card
 // const generateEngineerCard = (engineer) => {

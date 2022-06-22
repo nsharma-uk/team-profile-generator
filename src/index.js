@@ -1,7 +1,7 @@
 //import dependencies
 const fs = require("fs");
 const inquirer = require("inquirer");
-//const path = require("path");
+const path = require("path");
 const chalk = require("chalk");
 
 //import classes
@@ -16,11 +16,10 @@ const {
   internQuestions,
 } = require("./utils/questions");
 
-const { generateHtml } = require("./utils/generateHTML");
+const generateHtml = require("./utils/generateHtml");
 const { writeToFile } = require("./utils/writeToFile");
 
-//import write to file function
-//const writeToFile = require("./utils/writeToFile");
+//credit for init function code syntax - https://github.com/C-Sim
 
 //initialise questions
 const init = async () => {
@@ -77,7 +76,7 @@ const init = async () => {
 
   const generatedHtml = generateHtml(manager, engineers, interns);
 
-  writeToFile(generatedHtml);
+  writeToFile(path,generatedHtml);
   console.log(
     chalk.green(
       "Your html file has been created and you can now open your html file"

@@ -1,4 +1,18 @@
-# team-profile-generator
+# Team Profile Generator
+
+
+## Table of Contents
+
+- [Project Description](#description)
+- [Demo](#demo)
+- [Technologies](#technologies)
+- [Installation](#installation)
+- [Screenshots](#screenshots)
+- [License](#license)
+- [Tests](#tests)
+- [Author](#author)
+- [Contact](#contact )
+
 
 ## Project Description
 
@@ -6,17 +20,7 @@ This Node.js command-line application build takes in information about employees
 
 ## Demo
 
-## Table of Contents
-
-- [Project Description](#description)
-- [Technologies](#technologies)
-- [Installation](#installation)
-- [Screenshots](#screenshots)
-- [License](#license)
-- [Tests](#tests)
-- [Author](#author)
-- [Contact](#contact)
-
+[View demo here](https://drive.google.com/file/d/1XT5Mimzpxqjd-0BeHHm1o6N8ggz5LQ_u/view?usp=sharing)
 
 ## Technologies
 
@@ -74,7 +78,9 @@ Please contact me on my email: [email](nsharmauk711@gmail.com)
 
 Visit my GitHub profile [here](https://github.com/nsharma-uk)
 
-#User Journey
+
+## User Journey
+
 
 ````
 AS A manager

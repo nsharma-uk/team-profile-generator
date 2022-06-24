@@ -32,8 +32,8 @@
       </header>
       <main class="d-flex justify-content-around flex-wrap mt-5 m-2">
   (managers) => {
-    const createManager = (manager) => {
-      const managerCard = `<div class="card m-5 bg-info shadow mb-5 bg-body rounded">
+  const createManager = (manager) => {
+    const managerCard = `<div class="card m-5 bg-info shadow mb-5 bg-body rounded">
       <div class="card-header text-center text-muted bg-info">
         <i class="fa-solid fa-mug-hot fa-3x"></i>
         <h3 class="p-2">Manager</h3>
@@ -57,13 +57,13 @@
         
       </div>
     </div>`;
-      return managerCard;
-    };
-    return managers.map(createManager).join("");
-  }
+    return managerCard;
+  };
+  return managers.map(createManager).join("");
+}
   (engineers) => {
-    const createEngineer = (engineer) => {
-      const engineerCard = `<div class="card m-5 shadow mb-5 bg-body rounded">
+  const createEngineer = (engineer) => {
+    const engineerCard = `<div class="card m-5 shadow mb-5 bg-body rounded">
       <div class="card-header text-center text-muted bg-info">
         <i class="fa-solid fa-gears fa-3x"></i>
         <h3 class="p-2">Engineer</h3>
@@ -91,13 +91,13 @@
         </ul>
       </div>
     </div>`;
-      return engineerCard;
-    };
-    return engineers.map(createEngineer).join("");
-  }
+    return engineerCard;
+  };
+  return engineers.map(createEngineer).join("");
+}
   (interns) => {
-    const createIntern = (intern) => {
-      const internCard = `<div class="card m-5 shadow mb-5 bg-body rounded">
+  const createIntern = (intern) => {
+    const internCard = `<div class="card m-5 shadow mb-5 bg-body rounded">
       <div class="card-header text-center text-muted bg-info">
         <i class="fa-solid fa-graduation-cap fa-3x"></i>
         <h3 class="p-2">Intern</h3>
@@ -120,10 +120,10 @@
         </ul>
       </div>
     </div>`;
-      return internCard;
-    };
-    return interns.map(createIntern).join("");
-  }
+    return internCard;
+  };
+  return interns.map(createIntern).join("");
+}
     </main>
       <div class="footer-link-item">
           <a class="social-icon" href="mailto:nsharmauk711@gmail.com" target="_blank">

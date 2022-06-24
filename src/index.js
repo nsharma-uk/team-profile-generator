@@ -20,7 +20,7 @@ const {
 const generateHtml= require("./utils/generate");
 const writeToFile = require("./utils/writeToFile");
 
-//initialise questions
+//initialize questions
 const init = async () => {
   console.log(chalk.cyan("Welcome to the team profile generator"));
 

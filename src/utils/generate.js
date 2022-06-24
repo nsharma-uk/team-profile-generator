@@ -1,7 +1,7 @@
 //manager card
 const generateManagerCard = (managers) => {
-    const createManager = (manager) => {
-      const managerCard = `<div class="card m-5 bg-info shadow mb-5 bg-body rounded">
+  const createManager = (manager) => {
+    const managerCard = `<div class="card m-5 bg-info shadow mb-5 bg-body rounded">
       <div class="card-header text-center text-muted bg-info">
         <i class="fa-solid fa-mug-hot fa-3x"></i>
         <h3 class="p-2">Manager</h3>
@@ -25,15 +25,15 @@ const generateManagerCard = (managers) => {
         
       </div>
     </div>`;
-      return managerCard;
-    };
-    return managers.map(createManager).join("");
+    return managerCard;
   };
-  
-  //engineer card
-  const generateEngineerCard = (engineers) => {
-    const createEngineer = (engineer) => {
-      const engineerCard = `<div class="card m-5 shadow mb-5 bg-body rounded">
+  return managers.map(createManager).join("");
+};
+
+//engineer card
+const generateEngineerCard = (engineers) => {
+  const createEngineer = (engineer) => {
+    const engineerCard = `<div class="card m-5 shadow mb-5 bg-body rounded">
       <div class="card-header text-center text-muted bg-info">
         <i class="fa-solid fa-gears fa-3x"></i>
         <h3 class="p-2">Engineer</h3>
@@ -61,15 +61,15 @@ const generateManagerCard = (managers) => {
         </ul>
       </div>
     </div>`;
-      return engineerCard;
-    };
-    return engineers.map(createEngineer).join("");
+    return engineerCard;
   };
-  
-  // //intern card
-  const generateInternCard = (interns) => {
-    const createIntern = (intern) => {
-      const internCard = `<div class="card m-5 shadow mb-5 bg-body rounded">
+  return engineers.map(createEngineer).join("");
+};
+
+// //intern card
+const generateInternCard = (interns) => {
+  const createIntern = (intern) => {
+    const internCard = `<div class="card m-5 shadow mb-5 bg-body rounded">
       <div class="card-header text-center text-muted bg-info">
         <i class="fa-solid fa-graduation-cap fa-3x"></i>
         <h3 class="p-2">Intern</h3>
@@ -92,12 +92,12 @@ const generateManagerCard = (managers) => {
         </ul>
       </div>
     </div>`;
-      return internCard;
-    };
-    return interns.map(createIntern).join("");
+    return internCard;
   };
-  
-  const generateHtml = ()=>`<!DOCTYPE html> 
+  return interns.map(createIntern).join("");
+};
+
+const generateHtml = () => `<!DOCTYPE html> 
   <html lang="en">
     <head>
       <meta charset="UTF-8" />
@@ -156,6 +156,5 @@ const generateManagerCard = (managers) => {
       ></script>
     </body>
   </html>`;
-  
-  module.exports = generateHtml;
-  
+
+module.exports = generateHtml;

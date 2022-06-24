@@ -3,6 +3,7 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 const path = require("path");
 const chalk = require("chalk");
+const open = require ("open")
 
 //import classes
 const Manager = require("./lib/Manager");
@@ -16,8 +17,8 @@ const {
   internQuestions,
 } = require("./utils/questions");
 
-const {generateHtml}= require("./utils/generate");
-const { writeToFile } = require("./utils/writeToFile");
+const generateHtml= require("./utils/generate");
+const writeToFile = require("./utils/writeToFile");
 
 //initialise questions
 const init = async () => {
@@ -82,7 +83,8 @@ const init = async () => {
       "Your html file has been created and you can now open your html file"
     )
   );
-  open(`file://${filePath}`, { app: "chrome" });
+  
+  open('http://127.0.0.1:5501/index.html', {app: 'chrome'});
 };
 
 init();

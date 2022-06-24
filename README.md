@@ -17,9 +17,6 @@ This Node.js command-line application build takes in information about employees
 - [Author](#author)
 - [Contact](#contact)
 
-## Project Description
-
-This Node.js command-line application build takes in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person.
 
 ## Technologies
 

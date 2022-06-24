@@ -16,10 +16,8 @@ const {
   internQuestions,
 } = require("./utils/questions");
 
-const generateHtml = require("./utils/generateHtml");
+const {generateHtml}= require("./utils/generate");
 const { writeToFile } = require("./utils/writeToFile");
-
-//credit for init function code syntax - https://github.com/C-Sim
 
 //initialise questions
 const init = async () => {
@@ -30,7 +28,7 @@ const init = async () => {
   const engineers = [];
   const interns = [];
 
-  //ask team name
+  //prompt questions and get answer - manager
 
   const managerAnswers = await inquirer.prompt(managerQuestions);
 
@@ -42,7 +40,7 @@ const init = async () => {
     managerAnswers.team
   );
 
-  // engineers.push(manager);
+  // manager.push(manager);
 
   while (inProgress) {
     const { select } = await inquirer.prompt(selectEmployeeQuestion);
@@ -76,13 +74,15 @@ const init = async () => {
 
   const generatedHtml = generateHtml(manager, engineers, interns);
 
-  writeToFile(path,generatedHtml);
+  const filePath = path.join(__dirname, "../", "index.html");
+
+  writeToFile(filePath, generatedHtml);
   console.log(
     chalk.green(
       "Your html file has been created and you can now open your html file"
     )
   );
-  //open(`file://${absolutePath}`, { app: "chrome" });
+  open(`file://${filePath}`, { app: "chrome" });
 };
 
 init();

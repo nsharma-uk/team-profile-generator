@@ -1,8 +1,7 @@
 //manager card
-const generateManagerCard = (managers) => {
-  const createManager = (manager) => {
-    const managerCard = `<div class="card m-5 bg-info shadow mb-5 bg-body rounded">
-      <div class="card-header text-center text-muted bg-info">
+const generateManagerCard = (manager) => {
+  return `<div class="card m-5 bg-info shadow mb-5 bg-body rounded">
+      <div class="card-header text-center text-dark bg-info">
         <i class="fa-solid fa-mug-hot fa-3x"></i>
         <h3 class="p-2">Manager</h3>
       </div>
@@ -25,16 +24,13 @@ const generateManagerCard = (managers) => {
         
       </div>
     </div>`;
-    return managerCard;
-  };
-  return managers.map(createManager).join("");
 };
 
 //engineer card
 const generateEngineerCard = (engineers) => {
   const createEngineer = (engineer) => {
     const engineerCard = `<div class="card m-5 shadow mb-5 bg-body rounded">
-      <div class="card-header text-center text-muted bg-info">
+      <div class="card-header text-center text-dark bg-info">
         <i class="fa-solid fa-gears fa-3x"></i>
         <h3 class="p-2">Engineer</h3>
       </div>
@@ -55,7 +51,7 @@ const generateEngineerCard = (engineers) => {
           <li class="list-group-item fw-bold">
             Email:
             <span class="fw-normal"
-              ><a href="mailto: test@mail.com">${engineer.email}</a></span
+              ><a href="mailto: ${engineer.email}">${engineer.email}</a></span
             >
           </li>
         </ul>
@@ -70,7 +66,7 @@ const generateEngineerCard = (engineers) => {
 const generateInternCard = (interns) => {
   const createIntern = (intern) => {
     const internCard = `<div class="card m-5 shadow mb-5 bg-body rounded">
-      <div class="card-header text-center text-muted bg-info">
+      <div class="card-header text-center text-dark bg-info">
         <i class="fa-solid fa-graduation-cap fa-3x"></i>
         <h3 class="p-2">Intern</h3>
       </div>
@@ -97,7 +93,7 @@ const generateInternCard = (interns) => {
   return interns.map(createIntern).join("");
 };
 
-const generateHtml = () => `<!DOCTYPE html> 
+const generateHtml = (manager, engineers, interns) => `<!DOCTYPE html> 
   <html lang="en">
     <head>
       <meta charset="UTF-8" />
@@ -126,35 +122,38 @@ const generateHtml = () => `<!DOCTYPE html>
       <link rel="stylesheet" href="./dist/assets/css/styles.css" />
     </head>
     <body>
-      <header class="p-4 mb-6 bg-info text-center text-muted">
+      <header class="p-4 mb-6 bg-info text-center text-dark">
         <h1>My team</h1>
       </header>
       <main class="d-flex justify-content-around flex-wrap mt-5 m-2">
-  ${generateManagerCard}
-  ${generateEngineerCard}
-  ${generateInternCard}
+  ${generateManagerCard(manager)} 
+  ${generateEngineerCard(engineers)}
+  ${generateInternCard(interns)}
     </main>
-      <div class="footer-link-item">
-          <a class="social-icon" href="mailto:nsharmauk711@gmail.com" target="_blank">
-            <ion-icon name="mail-outline"></ion-icon>
-            </a>
-            <a class="social-icon" href="https://twitter.com/nsharmauk" target="_blank">
-              <ion-icon name="logo-twitter"></ion-icon>
-              </a>
-            <a class="social-icon" href="https://github.com/nsharma-uk" target="_blank">
-          <ion-icon name="logo-github"></ion-icon>
+    <footer class=" bg-info text-center">
+    <div class="footer-link-item">
+        <a class="social-icon" href="mailto:nsharmauk711@gmail.com" target="_blank">
+          <ion-icon name="mail-outline"></ion-icon>
           </a>
-        </div>
+          <a class="social-icon" href="https://twitter.com/nsharmauk" target="_blank">
+            <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          <a class="social-icon" href="https://github.com/nsharma-uk" target="_blank">
+        <ion-icon name="logo-github"></ion-icon>
+        </a>
       </div>
-      <p class="has-text-white pb-3">Copyright &copy; 2022</p>
     </div>
-  </footer>
-      <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"
-      ></script>
-    </body>
-  </html>`;
+    <p class="has-text-white pb-3">Copyright &copy; 2022</p>
+  </div>
+</footer>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>`;
 
 module.exports = generateHtml;

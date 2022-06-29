@@ -3,7 +3,7 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 const path = require("path");
 const chalk = require("chalk");
-const open = require ("open")
+const open = require("open");
 
 //import classes
 const Manager = require("./lib/Manager");
@@ -17,7 +17,7 @@ const {
   internQuestions,
 } = require("./utils/questions");
 
-const generateHtml= require("./utils/generate");
+const generateHtml = require("./utils/generate");
 const writeToFile = require("./utils/writeToFile");
 
 //initialize questions
@@ -30,43 +30,28 @@ const init = async () => {
   const interns = [];
 
   //prompt questions and get answer - manager
-
   const managerAnswers = await inquirer.prompt(managerQuestions);
 
-  const manager = new Manager(
-    managerAnswers.name,
-    managerAnswers.id,
-    managerAnswers.email,
-    managerAnswers.office,
-    managerAnswers.team
-  );
-
+  const manager = new Manager(managerAnswers);
   // manager.push(manager);
 
   while (inProgress) {
+    
     const { select } = await inquirer.prompt(selectEmployeeQuestion);
 
     //prompt questions and get answer - add an engineer
     if (select === "engineer") {
       const engineerAnswers = await inquirer.prompt(engineerQuestions);
-
-      const engineer = new Engineer(
-        engineerAnswers.name,
-        engineerAnswers.id,
-        engineerAnswers.email,
-        engineerAnswers.github
-      );
-
+       
+      const engineer = new Engineer(engineerAnswers);
+      
       engineers.push(engineer);
+
     } else if (select === "intern") {
       const internAnswers = await inquirer.prompt(internQuestions);
 
-      const intern = new Intern(
-        internAnswers.name,
-        internAnswers.id,
-        internAnswers.email,
-        internAnswers.school
-      );
+      const intern = new Intern(internAnswers);
+
       interns.push(intern);
     } else {
       inProgress = false;
@@ -83,8 +68,8 @@ const init = async () => {
       "Your html file has been created and you can now open your html file"
     )
   );
-  
-  open('http://127.0.0.1:5501/index.html', {app: 'chrome'});
+
+  open("http://127.0.0.1:5501/index.html", { app: "chrome" });
 };
 
 init();
